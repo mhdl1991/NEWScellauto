@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="styles.css">
+		<title>2D Wolfram-style Cellular Automata</title>
+	</head>
+	
+	<body>
+		<h1>2D Wolfram-style Cellular Automata</h1>
+		<div class = "explainer">
+			<ul>
+				<li>Each cell on the grid is either a 1 or 0</li>
+				<li>Each cell has four neighbors: North, East, West, South</li>
+				<li>The neighborhood <strong>(NEWS)</strong> of each cell can be written as a 4-bit number from 0 <strong>(0000)</strong>  to 15 <strong>(1111)</strong></li>
+				<li>a <strong>Rule</strong> (a 16-bit number) maps each neighborhood to the cell's next value</li>
+			</ul>
+		</div>
+		
+		<div class="main-layout">
+			<!-- Left panel: rule controls -->
+			<div class="panel left-panel">
+				<div class="rule-input-row">
+					<label for="ruleNum">Rule #</label>
+					<input id="ruleNum" type="number" min="0" max="65535" value="65535"></input>
+					<button id="setRule">Set Rule</button>
+					<button id="randomRule">Random Rule</button>
+				</div>
+				
+				<table class="rule-table">
+					<thead>
+						<th>N E W S</th>
+						<th>Result</th>
+					</thead>
+					<tbody>
+						<tr><th scope="col">0000</th><th scope="col" id="rule0">1</th></tr>					
+						<tr><th scope="col">0001</th><th scope="col" id="rule1">1</th></tr>					
+						<tr><th scope="col">0010</th><th scope="col" id="rule2">1</th></tr>
+						<tr><th scope="col">0011</th><th scope="col" id="rule3">1</th></tr>					
+						<tr><th scope="col">0100</th><th scope="col" id="rule4">1</th></tr>					
+						<tr><th scope="col">0101</th><th scope="col" id="rule5">1</th></tr>					
+						<tr><th scope="col">0110</th><th scope="col" id="rule6">1</th></tr>
+						<tr><th scope="col">0111</th><th scope="col" id="rule7">1</th></tr>
+						<tr><th scope="col">1000</th><th scope="col" id="rule8">1</th></tr>					
+						<tr><th scope="col">1001</th><th scope="col" id="rule9">1</th></tr>	
+						<tr><th scope="col">1010</th><th scope="col" id="rule10">1</th></tr>					
+						<tr><th scope="col">1011</th><th scope="col" id="rule11">1</th></tr>
+						<tr><th scope="col">1100</th><th scope="col" id="rule12">1</th></tr>						
+						<tr><th scope="col">1101</th><th scope="col" id="rule13">1</th></tr>						
+						<tr><th scope="col">1110</th><th scope="col" id="rule14">1</th></tr>							
+						<tr><th scope="col">1111</th><th scope="col" id="rule15">1</th></tr>					
+					</tbody>
+				</table>
+			</div>
+			
+			<!-- Right panel: canvas + controls -->
+			<div class="panel right-panel">
+				<div id = "sim-controls">
+					<button id="pauseBtn">Pause</button>
+					<button id="clearBtn">Clear</button>
+					<button id="stepBtn">Step Forward</button>
+					<button id="randomizeGridBtn">Random</button>
+					<button id="wrapAroundBtn">Wrap enabled</button>
+				</div>
+				
+				<div class="speed-row">
+					<label for="speedSlider">Speed</label>
+					<input id="speedSlider" type="range" min="1" max="60" value="1">
+					<span id="speedLabel">Full speed</span>
+				</div>
+
+				<div class="canvas-wrap">
+					<canvas id="myCanvas"></canvas>
+					<div class="canvas-hint">Left-click drag to draw &nbsp;·&nbsp; Right-click drag to erase</div>
+				</div>
+			</div>
+			
+		
+		
+		</div>
+		
+		<script src="./cellauto.js" type="text/javascript"></script>
+	</body>
+</html>
